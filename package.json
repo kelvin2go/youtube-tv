@@ -1,0 +1,34 @@
+{
+  "name": "youtube-tv",
+  "version": "1.0.0",
+  "description": "Nuxt.js + Vuetify.js project",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "dev": "export `cat env/.dev.env` && nuxt",
+    "build": "export `cat env/.dev.env` && nuxt build",
+    "start": "export `cat env/.dev.env` && nuxt start",
+    "deploy": "yarn build && push-dir — dir=dist —remote=git@github.com:kelvin2go/kelvin2go.github.io.git — branch=test — local-branch-name=master — cleanup — allow-unclean",
+    "generate": "export `cat env/.dev.env` && nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.3",
+    "axios-extensions": "^3.0.3",
+    "nuxt": "^2.1.0",
+    "vue-youtube": "^1.2.5",
+    "vuetify": "^1.2.6"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.1.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1"
+  }
+}
