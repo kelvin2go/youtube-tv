@@ -1,3 +1,9 @@
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/playground/tv'
+  }
+} : {}
+
 export default {
   /*
   ** Headers of the page
@@ -25,6 +31,7 @@ export default {
   css: [
     '~/assets/style/app.styl'
   ],
+  ...routerBase,
   /*
   ** Customize the progress bar color
   */
