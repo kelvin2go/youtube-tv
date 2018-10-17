@@ -24,7 +24,7 @@ export default {
         useCache: true 
       })
       console.log(data)
-      if (data && data.items.length > 0) {
+      if (data && data.items && data.items.length > 0) {
         return { 
           tvList: data
         }

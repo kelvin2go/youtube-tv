@@ -8,7 +8,7 @@
     "dev": "export `cat env/.dev.env` && nuxt",
     "build": "export `cat env/.dev.env` && nuxt build",
     "start": "export `cat env/.dev.env` && nuxt start",
-    "deploy": "yarn build && push-dir — dir=dist —remote=git@github.com:kelvin2go/kelvin2go.github.io.git — branch=test — local-branch-name=master — cleanup — allow-unclean",
+    "deploy": "yarn build && push-dir --dir=dist --remote=git@github.com:kelvin2go/kelvin2go.github.io.git --branch=tv --local-branch-name=master --cleanup --allow-unclean",
     "generate": "export `cat env/.dev.env` && nuxt generate"
   },
   "dependencies": {

@@ -7,8 +7,8 @@
       </div>
       <v-card class="tv-card" v-for="(item, index) in tvList" :key="`tv_${item.id}`" >
        
-        <v-img v-if="item.snippet && item.snippet.thumbnails.medium"
-          :src="item.snippet.thumbnails.medium.url"
+        <v-img v-if="item.snippet && item.snippet.thumbnails && item.snippet.thumbnails.standard"
+          :src="item.snippet.thumbnails.standard.url"
           height="180px"
           width="320px"
           @click="changeChannel(index)"

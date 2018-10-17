@@ -11,7 +11,7 @@
     </v-navigation-drawer>
     <v-toolbar absolute class="menuBar" v-show="drawer || hover ">
       <v-toolbar-side-icon @click="toggleDrawer"></v-toolbar-side-icon>
-      <v-flex xs12 sm6 md3 white--text>
+      <v-flex xs12 sm6 md3 white--text :label="currentIndex">
         <v-text-field
           label="Watch youtube playlist"
           placeholder="playlist ID"
@@ -23,7 +23,7 @@
     </v-toolbar>
     <v-flex xs-12>
       <div class="videoContainer">
-        <youtube width="100%" height="100%" :video-id="currentVideo.id" :player-vars="playerVars" @playing="playing"></youtube>
+        <youtube width="100%" height="100%" :video-id="currentVideo.id" :player-vars="playerVars" @playing="playing" @ended="currentIndex++"></youtube>
       </div>
     </v-flex>
   </v-layout>
@@ -52,7 +52,7 @@ export default {
         },
         useCache: true 
       })
-      console.log(data)
+      console.log(data.items[0].snippet)
       if (data && data.items.length > 0) {
         return { 
           tvList: data
@@ -91,9 +91,9 @@ export default {
       }
     },
     currentVideo: function () {
-      if ( this.tvList.items.length > 0 ) {
+      if ( this.allList.items.length > 0 ) {
         return {
-          id: this.tvList.items[this.currentIndex].snippet.resourceId.videoId
+          id: this.allList.items[this.currentIndex].snippet.resourceId.videoId
         }
       } 
       return {
@@ -106,7 +106,12 @@ export default {
     redirectVID (playlistId) {
       console.log("***!!!" + playlistId)
       // this.$router.push({path: "/"+playlistId, query: {id: playlistId}});
-      window.location.href = `${location.protocol}//${window.location.hostname}:${location.port}/${playlistId}`
+      let HOST_BASE = `${location.protocol}//${window.location.hostname}:${location.port}/`
+      if (window.location.hostname === 'kelvinho.js.org') {
+        HOST_BASE += 'playground/tv/'
+      }
+      console.log(HOST_BASE)
+      window.location.href = `${HOST_BASE}${playlistId}`
     },
     changeChannel (index) {
       // this.videoId = id
@@ -144,11 +149,11 @@ export default {
   .v-navigation-drawer
     z-index: 4000
 
-.fullscreen:hover
-  .menuBar
-    display: block
-  .toolbar
-    display: block
+// .fullscreen:hover
+//   .menuBar
+//     display: block
+//   .toolbar
+//     display: block
 
 .videoContainer
   position: absolute
