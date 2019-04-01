@@ -1,20 +1,16 @@
 <template>
   <v-app dark>
-    <v-content>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-content>
+    <nuxt />
   </v-app>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-      }
+export default {
+  data () {
+    return {
     }
   }
+}
 </script>
 
 <style>

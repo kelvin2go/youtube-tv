@@ -1,13 +1,26 @@
 <template>
   <v-layout row>
-    
-    <v-flex xs12 v-if="tvList.length > 0" >
-      <div class="display-2"> 
-        TV list {{tvList.length}} channels
+
+    <v-flex
+      xs12
+      v-if="tvList.length > 0"
+    >
+      <div class="display-2">
+        <i
+          class="material-icons"
+          style="font-size:32px"
+        >
+          live_tv
+        </i> {{tvList.length}} channels
       </div>
-      <v-card class="tv-card" v-for="(item, index) in tvList" :key="`tv_${item.id}`" >
-       
-        <v-img v-if="item.snippet && item.snippet.thumbnails && item.snippet.thumbnails.standard"
+      <v-card
+        class="tv-card"
+        v-for="(item, index) in tvList"
+        :key="`tv_${item.id}`"
+      >
+
+        <v-img
+          v-if="item.snippet && item.snippet.thumbnails && item.snippet.thumbnails.standard"
           :src="item.snippet.thumbnails.standard.url"
           height="180px"
           width="320px"
@@ -17,7 +30,11 @@
             column
             fill-height
           >
-            <v-btn class="tv-title" icon disabled>
+            <v-btn
+              class="tv-title"
+              icon
+              disabled
+            >
               {{index + 1}}
             </v-btn>
             <v-spacer></v-spacer>
@@ -26,7 +43,10 @@
         </v-img>
       </v-card>
     </v-flex>
-    <v-flex xs12 v-else > 
+    <v-flex
+      xs12
+      v-else
+    >
       No channels
     </v-flex>
   </v-layout>
@@ -47,15 +67,15 @@ export default {
 </script>
 
 <style>
-  .tv-title {
-    overflow: hidden;
-    background-color: rgba(119, 119, 119, .9);
-    height: 32px;
-    font-size: 23px;
-    font-weight: 500;
-    padding: 0px 7px;
-  }
-  .tv-card {
-    padding-bottom: 10px;
-  }
+.tv-title {
+  overflow: hidden;
+  background-color: rgba(119, 119, 119, 0.9);
+  height: 32px;
+  font-size: 22px;
+  font-weight: 500;
+  padding: 0px 7px;
+}
+.tv-card {
+  padding-bottom: 10px;
+}
 </style>
